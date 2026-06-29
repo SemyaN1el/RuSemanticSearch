@@ -1,0 +1,41 @@
+[project]
+name = "rusemanticsearch"
+version = "0.1.0"
+description = "Hybrid retrieval project for Russian and mixed Russian-English text"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pymorphy3>=2.0.2",
+    "rank-bm25>=0.2.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.0",
+    "ruff>=0.8.0",
+]
+
+[project.scripts]
+rusearch = "rusemanticsearch.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP",
+    "SIM",
+]

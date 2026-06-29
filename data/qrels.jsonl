@@ -1,0 +1,9 @@
+{"qid":"q-1","doc_id":"doc-1","rel":2}
+{"qid":"q-1","doc_id":"doc-2","rel":1}
+{"qid":"q-2","doc_id":"doc-6","rel":2}
+{"qid":"q-2","doc_id":"doc-2","rel":1}
+{"qid":"q-3","doc_id":"doc-3","rel":2}
+{"qid":"q-3","doc_id":"doc-2","rel":1}
+{"qid":"q-4","doc_id":"doc-4","rel":2}
+{"qid":"q-5","doc_id":"doc-10","rel":2}
+{"qid":"q-5","doc_id":"doc-1","rel":1}
