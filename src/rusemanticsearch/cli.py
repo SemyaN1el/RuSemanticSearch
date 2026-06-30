@@ -6,6 +6,7 @@ from pathlib import Path
 
 from rusemanticsearch.data.io import load_documents, load_eval_queries, load_qrels
 from rusemanticsearch.eval.metrics import evaluate_run
+from rusemanticsearch.eval.validation import validate_eval_data
 from rusemanticsearch.retrieval.bm25 import BM25Retriever
 from rusemanticsearch.text.normalize import RussianTextNormalizer
 
@@ -34,6 +35,7 @@ def eval_bm25(args: argparse.Namespace) -> None:
     retriever = build_bm25(args.documents, lemmatize=not args.no_lemmatize)
     queries = load_eval_queries(args.eval_queries)
     qrels = load_qrels(args.qrels)
+    validate_eval_data(documents=retriever.documents, queries=queries, qrels=qrels)
     metrics = evaluate_run(retriever=retriever, queries=queries, qrels=qrels, k=args.k)
 
     for metric_name, value in metrics.items():
