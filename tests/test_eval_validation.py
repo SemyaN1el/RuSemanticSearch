@@ -75,3 +75,13 @@ def test_validate_eval_data_rejects_query_without_qrels() -> None:
 
     with pytest.raises(ValueError, match="Queries without qrels: q-2"):
         validate_eval_data(documents=_documents(), queries=_queries(), qrels=qrels)
+
+
+def test_validate_eval_data_rejects_query_without_positive_qrels() -> None:
+    qrels = [
+        Qrel(qid="q-1", doc_id="doc-1", rel=2),
+        Qrel(qid="q-2", doc_id="doc-2", rel=0),
+    ]
+
+    with pytest.raises(ValueError, match="Queries without positive qrels: q-2"):
+        validate_eval_data(documents=_documents(), queries=_queries(), qrels=qrels)

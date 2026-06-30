@@ -14,6 +14,10 @@ def qrels_by_query(qrels: list[Qrel]) -> dict[str, dict[str, int]]:
     return dict(grouped)
 
 
+def has_positive_relevance(relevance: dict[str, int]) -> bool:
+    return any(rel > 0 for rel in relevance.values())
+
+
 def precision_at_k(results: list[SearchResult], relevance: dict[str, int], k: int) -> float:
     if k <= 0:
         raise ValueError("k must be positive")
@@ -86,6 +90,9 @@ def evaluate_run(
 
     for query in queries:
         relevance = grouped_qrels.get(query.qid, {})
+        if not has_positive_relevance(relevance):
+            raise ValueError(f"Query has no positive qrels: {query.qid}")
+
         results = retriever.search(query.query, top_k=k)
         totals["precision"] += precision_at_k(results, relevance, k)
         totals["recall"] += recall_at_k(results, relevance, k)

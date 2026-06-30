@@ -6,6 +6,7 @@ RuSemanticSearch - учебный NLP/retrieval-проект для стажир
 
 Главный риск проекта - не архитектура, а данные. Поэтому отдельно фиксируются:
 
+- долговременный план разработки: [PROJECT_PLAN.md](PROJECT_PLAN.md);
 - методология подготовки обучающих пар и eval-набора: [DATA_PIPELINE.md](DATA_PIPELINE.md);
 - практичные источники документов: [docs/DOCUMENT_SOURCES.md](docs/DOCUMENT_SOURCES.md);
 - критерии качества кода: [CODE_QUALITY.md](CODE_QUALITY.md).
@@ -443,6 +444,7 @@ RuSemanticSearch/
     models/
   pyproject.toml
   README.md
+  PROJECT_PLAN.md
   DATA_PIPELINE.md
   CODE_QUALITY.md
   docs/

@@ -27,6 +27,9 @@ class BM25Retriever:
             raise ValueError("top_k must be positive")
 
         query_tokens = self.normalizer.tokens(query)
+        if not query_tokens:
+            return []
+
         scores = self._bm25.get_scores(query_tokens)
         ranked_indices = sorted(
             range(len(scores)),

@@ -105,7 +105,7 @@ def load_qrels(path: Path | str) -> list[Qrel]:
         qid = _require_str(raw, "qid", source_path, line_number)
         doc_id = _require_str(raw, "doc_id", source_path, line_number)
         rel = raw.get("rel")
-        if not isinstance(rel, int) or rel < 0:
+        if isinstance(rel, bool) or not isinstance(rel, int) or rel < 0:
             raise ValueError(
                 f"Expected non-negative integer field 'rel' at {source_path}:{line_number}"
             )
